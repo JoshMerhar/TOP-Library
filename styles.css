@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+}
+
+#new-book-button {
+    margin: auto;
+}
+
+.new-book {
+    position: fixed;
+    display: none;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+#form {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    margin: 5% auto;
+    border: 2px solid black;
+    height: 40%;
+    width: 25%;
+}
+
+.library {
+    display: grid;
+    grid-template-rows: repeat(auto, 1fr);
+    width: 50%;
+    margin: 0 auto;
+}
+
+.book {
+    border: 2px solid black;
+}
+
+.close-form:hover {
+    cursor: pointer;
+}

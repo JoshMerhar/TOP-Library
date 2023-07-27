@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./library.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <div class="container">
+        <button id="new-book-button">New Book</button>
+        <div class="new-book">
+            <form action="./library.js" id="form">
+                <div class="top-row form-row">
+                    <legend>New Book</legend>
+                    <span class="close-form">x</span>
+                </div>
+                <div class="form-row">
+                    <label for="title">Book Title</label>
+                    <input type="text" name="title" id="title" placeholder="Title" required>
+                </div>
+                <div class="form-row">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" placeholder="Author" required>
+                </div>
+                <div class="form-row">
+                    <label for="pages">Pages</label>
+                    <input type="number" name="pages" id="pages" placeholder="Pages" required>
+                </div>
+                <div class="form-row">
+                    <label for="status">Status</label>
+                    <select name="status" id="status">
+                        <option value="Read">Read</option>
+                        <option value="Not read">Not read</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <button type="submit" form="form" name="submit" id="submit">Add Book</button>
+                </div>
+            </form>
+        </div>
+        <div class="library">
+
+        </div>
+    </div>
+</body>
+</html>
