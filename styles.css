@@ -1,12 +1,24 @@
+@font-face {
+    font-family: 'robotoregular';
+    src: url('./Font/roboto-regular-webfont.woff2') format('woff2'),
+         url('./Font/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     box-sizing: border-box;
+    font-family: 'robotoregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .container {
     display: grid;
+    margin: auto;
 }
 
 #new-book-button {
+    font-size: 24px;
+    padding: 0 10px;
     margin: auto;
 }
 
@@ -23,19 +35,77 @@
     grid-template-rows: repeat(6, 1fr);
     margin: 5% auto;
     border: 2px solid black;
+    border-radius: 15px;
     height: 40%;
-    width: 25%;
+    width: 20%;
+    padding: 25px;
+    background-color: gainsboro;
+    font-size: 24px;
+}
+
+#form .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input, select, #submit {
+    font-size: 18px;
+}
+
+select, #submit {
+    font-size: 24px;
+}
+
+#submit {
+    margin: auto;
+}
+
+.close-form {
+    font-weight: bold;
+}
+
+.close-form:hover {
+    transform: scale(1.2);
 }
 
 .library {
     display: grid;
-    grid-template-rows: repeat(auto, 1fr);
-    width: 50%;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+    grid-auto-rows: minmax(200px, 1fr);
+    place-self: center;
+    width: 80%;
+    margin: 25px 50px;
+    gap: 25px;
 }
 
-.book {
+.book-card {
+    display: grid;
+    max-width: 500px;
+    padding: 20px;
     border: 2px solid black;
+    border-radius: 10px;
+}
+
+.book-title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.book-author {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px 0;
+}
+
+.book-pages {
+    font-size: 18px;
 }
 
 .close-form:hover {

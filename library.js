@@ -14,12 +14,21 @@ class Book {
 function addBookToLibrary(event) {
     if (form.title.value && form.author.value && form.pages.value) {
         event.preventDefault();
-        const createBook = new Book(title, author, pages, status);
-        const newBook = document.createElement("div");
-        newBook.classList.add("book");
-        newBook.textContent = createBook.title + " by " + createBook.author + ", " + createBook.pages + " pages - " + "Status: " + createBook.status;
-        library.appendChild(newBook);
-        myLibrary.push(createBook);
+        const newBook = new Book(title, author, pages, status);
+        const createBook = document.createElement("div");
+        createBook.classList.add("book-card");
+        createBook.innerHTML = 
+            `<div class="book-info">
+                <div class="book-title">${newBook.title}</div>
+                <div class="book-author">by ${newBook.author}</div>
+                <div class="book-pages">${newBook.pages} pages</div>
+            </div>
+            <div class="book-buttons">
+                <button class="status-button">${newBook.status}</button>
+                <button class="remove-book-button">Remove</button>
+            </div>`;
+        library.appendChild(createBook);
+        myLibrary.push(newBook);
         resetForm();
     }
 }
