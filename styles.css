@@ -37,7 +37,7 @@
     border: 2px solid black;
     border-radius: 15px;
     height: 40%;
-    width: 20%;
+    width: fit-content;
     padding: 25px;
     background-color: gainsboro;
     font-size: 24px;
@@ -53,6 +53,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 
 input, select, #submit {
@@ -91,6 +92,7 @@ select, #submit {
     padding: 20px;
     border: 2px solid black;
     border-radius: 10px;
+    background-color: burlywood;
 }
 
 .book-title {
@@ -110,4 +112,23 @@ select, #submit {
 
 .close-form:hover {
     cursor: pointer;
+}
+
+.book-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.status-button, .remove-book-button {
+    font-size: 18px;
+    width: 20%;
+}
+
+.status-button-read {
+    background-color: green;
+}
+
+.status-button-unread {
+    background-color: red;
 }
