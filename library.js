@@ -1,6 +1,7 @@
 const mainContent = document.querySelector(".library");
 
 let myLibrary = [{title: "Some Book", author: "Some Person", pages: 830, status: "Read"}];
+resetPage();
 displayLibrary();
 
 const newBookForm = document.querySelector(".new-book");
@@ -28,12 +29,12 @@ function addBookToLibrary(event) {
         const newBook = new Book(title, author, pages, status);
         myLibrary.push(newBook);
         resetForm();
-        resetPage();
         displayLibrary();
     }
 }
 
 function displayLibrary() {
+    resetPage();
     if (myLibrary) {
         for (let i = 0; i < myLibrary.length; i++) {
             const createBook = document.createElement("div");
@@ -50,35 +51,44 @@ function displayLibrary() {
                 </div>`;
             myLibrary[i].id = i;
             mainContent.appendChild(createBook);
-            setStatus();
+            setStatus(i);
         }
-    }
-}
-
-function setStatus() {
-    const statusButtons = document.querySelectorAll(".status-button");
-    statusButtons.forEach(statusButton => {
-        if (statusButton.innerHTML === "Read") {
-            statusButton.classList.add("status-button-read");
-        } else {
-            statusButton.classList.add("status-button-unread");
-        }
+        const removeButtons = document.querySelectorAll(".remove-book-button");
+        removeButtons.forEach((removeButton, i) => {
+        removeButton.addEventListener("click", () => removeBook(i));
     });
-    statusButtons.forEach(statusButton => statusButton.addEventListener("click", changeStatus))
+    }
+    return;
 }
 
-function changeStatus() {
-    const statusButtons = document.querySelectorAll(".status-button");
-    statusButtons.forEach(statusButton => {
-        if (statusButton.innerHTML === "Read") {
-            statusButton.classList.remove("status-button-read");
-            statusButton.classList.add("status-button-unread");
-            statusButton.innerHTML = "Not read";
-        } else {
-            statusButton.classList.remove("status-button-unread");
+function setStatus(bookIndex) {
+    const statusButton = document.querySelector(`.book-card:nth-child(${bookIndex + 1}) .status-button`);
+        if (myLibrary[bookIndex].status === "Read") {
             statusButton.classList.add("status-button-read");
-            statusButton.innerHTML = "Read";
-        }});
+        } else {
+            statusButton.classList.add("status-button-unread");
+        }
+    statusButton.addEventListener("click", () => changeStatus(bookIndex));
+}
+
+function changeStatus(bookIndex) {
+    const statusButton = document.querySelector(`.book-card:nth-child(${bookIndex + 1}) .status-button`);
+    if (myLibrary[bookIndex].status === "Read") {
+        myLibrary[bookIndex].status = "Not read";
+        statusButton.classList.remove("status-button-read");
+        statusButton.classList.add("status-button-unread");
+        statusButton.textContent = "Not read";
+    } else {
+        myLibrary[bookIndex].status = "Read";
+        statusButton.classList.remove("status-button-unread");
+        statusButton.classList.add("status-button-read");
+        statusButton.textContent = "Read";
+    };
+}
+
+function removeBook(bookIndex) {
+    myLibrary.splice(bookIndex, 1);
+    displayLibrary();
 }
 
 function resetForm() {
