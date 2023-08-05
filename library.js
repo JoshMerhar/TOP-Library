@@ -1,6 +1,10 @@
 const mainContent = document.querySelector(".library");
 
-let myLibrary = [{title: "Some Book", author: "Some Person", pages: 830, status: "Read"}];
+let myLibrary = [
+    {title: "Some Book", author: "Some Person", pages: 830, status: "Read"},
+    {title: "Another Book", author: "Someone Else", pages: 234, status: "Not read"},
+    {title: "How to Read", author: "Phil Itterit", pages: 9, status: "Read"}
+        ];
 resetPage();
 displayLibrary();
 
@@ -16,17 +20,17 @@ submitButton.addEventListener("click", addBookToLibrary);
 
 class Book {
     constructor(title, author, pages, status) {
-        this.title = form.title.value;
-        this.author = form.author.value;
-        this.pages = form.pages.value;
-        this.status = form.status.value;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
     }
 }
 
 function addBookToLibrary(event) {
     if (form.title.value && form.author.value && form.pages.value) {
         event.preventDefault();
-        const newBook = new Book(title, author, pages, status);
+        const newBook = new Book(form.title.value, form.author.value, form.pages.value, form.status.value);
         myLibrary.push(newBook);
         resetForm();
         displayLibrary();
